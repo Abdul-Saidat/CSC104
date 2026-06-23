@@ -134,7 +134,9 @@ function displayQuestion () {
     btn.classList.add('options_btn')
 
     btn.addEventListener('click', () => {
+      q.userAnswer = option
       if (q.userAnswer === q.answer) {
+        console.log('right answer')
         document.body.style.backgroundColor = 'green'
       } else {
         console.log('wrong answer')

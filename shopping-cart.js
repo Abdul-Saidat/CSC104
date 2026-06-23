@@ -5,19 +5,19 @@
  */
 const products = [
   { 'id': 1,
-    'name': 'Rolex watch',
+    'name': 'Umbrella',
     'price': 400 },
   { 'id': 2,
-    'name': 'New Balance1',
+    'name': 'LED Sunset Lamp',
     'price': 566 },
   { 'id': 3,
-    'name': 'Viva-soap',
+    'name': 'Laptop stand',
     'price': 600 },
   { 'id': 4,
-    'name': 'New Balance2',
+    'name': 'Water heater',
     'price': 700 },
   { 'id': 5,
-    'name': 'New Balance3',
+    'name': 'Joyful Beanie',
     'price': 800 }
 ]
 
@@ -32,19 +32,26 @@ function removeFromCart (productId) {
 }
 
 const cartSection = document.getElementById('cart-section')
+if (cart.length === 0) {
+  cartSection.innerHTML = `<p class='empty'> Cart is empty </p>`
+}
 function renderCart () {
   cartSection.innerHTML = ''
   const cartContent = cart.forEach((item) => {
-    const name = document.createElement('div')
+    const name = document.createElement('span')
+    name.classList.add('product-name')
     name.textContent = item.name
     const price = document.createElement('div')
+    price.classList.add('product-price')
     price.textContent = item.price
     const button = document.createElement('button')
+    button.classList.add('remove-item')
     button.textContent = 'Remove item'
     button.addEventListener('click', () => {
       removeFromCart(item.id)
     })
     const cartItem = document.createElement('div')
+    cartItem.classList.add('cart-item')
     cartItem.textContent = `${name.textContent}: ${price.textContent}`
     cartItem.appendChild(button)
     cartSection.appendChild(cartItem)
@@ -60,14 +67,18 @@ function renderCart () {
 const productSection = document.getElementById('products')
 const productDisplay = products.forEach((product) => {
   const prod = document.createElement('div')
-  prod.textContent = product.name
+  const productName = document.createElement('p')
+  prod.classList.add('product-item')
+  productName.textContent = product.name
   const button = document.createElement('button')
+  button.classList.add('add-item')
   button.textContent = 'Add to Cart'
   button.addEventListener('click', () => {
     cart.push(product)
     renderCart()
   })
 
+  prod.appendChild(productName)
   prod.appendChild(button)
   console.log(prod)
   productSection.appendChild(prod)
