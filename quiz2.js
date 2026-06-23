@@ -20,32 +20,93 @@ const questions = [
     ],
     'answer': 'Float',
     'userAnswer': null
+  },
+  {
+    'question': 'Which of these is NOT a JavaScript data type?',
+    'options': [
+      'String',
+      'Boolean',
+      'Float',
+      'Undefined'
+    ],
+    'answer': 'Float',
+    'userAnswer': null
+  },
+  {
+    'question': 'Which of these is NOT a JavaScript data type?',
+    'options': [
+      'String',
+      'Boolean',
+      'Float',
+      'Undefined'
+    ],
+    'answer': 'Float',
+    'userAnswer': null
+  },
+  {
+    'question': 'Which of these is NOT a JavaScript data type?',
+    'options': [
+      'String',
+      'Boolean',
+      'Float',
+      'Undefined'
+    ],
+    'answer': 'Float',
+    'userAnswer': null
+  },
+  {
+    'question': 'Which of these is NOT a JavaScript data type?',
+    'options': [
+      'String',
+      'Boolean',
+      'Float',
+      'Undefined'
+    ],
+    'answer': 'Float',
+    'userAnswer': null
+  },
+  {
+    'question': 'Which of these is NOT a JavaScript data type?',
+    'options': [
+      'String',
+      'Boolean',
+      'Float',
+      'Undefin'
+    ],
+    'answer': 'Float',
+    'userAnswer': null
   }
 ]
 
-let score = 0
+let score = document.createElement('p')
+score.textContent = 0
 let current_question_index = 0
 const next = document.createElement('button')
+next.classList.add('next_btn')
 const prev = document.createElement('button')
+prev.classList.add('prev_btn')
 const selectOption = document.createElement('button')
 next.textContent = 'Next'
 prev.textContent = 'Previous'
 
 const quizContainer = document.getElementById('quiz')
-const questionContainer = document.createElement('div')
+const questionContainer = document.createElement('p')
+questionContainer.classList.add('question')
 const optionsContainer = document.createElement('div')
+optionsContainer.classList.add('options')
 const displayScore = document.createElement('p')
 const finalScore = document.createElement('p')
 
 function updateScore () {
-  displayScore.textContent = `Score: ${score}`
-  finalScore.textContent = `Final score: ${score} / ${questions.length}`
+  displayScore.textContent = `Score: ${score.textContent}`
+  finalScore.textContent = `Final score: ${score.textContent} / ${questions.length}`
 }
 
 function showFinalScore () {
   quizContainer.innerHTML = ''
   const result = document.createElement('h2')
-  result.textContent = `Your score: ${score} / ${questions.length}`
+  result.classList.add('show_result')
+  result.textContent = `Your score: ${score.textContent} / ${questions.length}`
   const grade = document.createElement('h2')
   if (score == questions.length) {
     grade.textContent = 'EXCELLENT'
@@ -58,6 +119,7 @@ function showFinalScore () {
 
 
 function displayQuestion () {
+  document.body.style.backgroundColor = 'white'
   const q = questions[current_question_index]
   questionContainer.innerHTML = ''
   const questionText = document.createElement('p')
@@ -69,8 +131,15 @@ function displayQuestion () {
   q.options.forEach((option) => {
     const btn = document.createElement('button')
     btn.textContent = option
+    btn.classList.add('options_btn')
 
     btn.addEventListener('click', () => {
+      if (q.userAnswer === q.answer) {
+        document.body.style.backgroundColor = 'green'
+      } else {
+        console.log('wrong answer')
+        document.body.style.backgroundColor = 'red'
+      }
       handleAnswer(option)
     })
     optionsContainer.appendChild(btn)
@@ -83,10 +152,11 @@ function calculateScore () {
   questions.forEach((q) => {
     if (q.userAnswer === q.answer) {
       newScore++
+      // document.body.style.backgroundColor = 'green'
     }
   })
 
-  score = newScore
+  score.textContent = newScore
   updateScore()
 }
 
@@ -117,8 +187,6 @@ function prevQuestion () {
 
 next.addEventListener('click', nextQuestion)
 prev.addEventListener('click', prevQuestion)
-
-
 quizContainer.appendChild(questionContainer)
 quizContainer.appendChild(optionsContainer)
 quizContainer.appendChild(prev)

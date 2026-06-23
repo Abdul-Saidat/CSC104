@@ -1,23 +1,36 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FORM VALIDATOR</title>
-</head>
-<body>
-    <h1>FORM VALIDATOR</h1>
-    <form action="">
-        <label for="username">Username:</label>
-        <input type="text" id="username">
-        <p id="feedback"></p>
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password">
-        <p id="password_feedback"></p>
-        <label for="phone">Phone</label>
-        <input type="text" name="phone" id="phone">
-        <p id="phone_feedback"></p>
-    </form>
-    <script src="./form.js"></script>
-</body>
-</html>
+    <link rel="stylesheet" href="./form.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <section>
+
+        <h1>FORM VALIDATOR</h1>
+        <form action="">
+            <div>
+                <label for="username">Username:</label>
+                <input type="text" id="username" placeholder="Validate username" />
+                <p id="feedback" class="feedback"></p>
+            </div>
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" name="password" id="password" placeholder="Validate password" />
+                <p id="password_feedback" class="feedback"></p>
+            </div>
+            <div>
+                <label for="phone">Phone:</label>
+                <input type="text" name="phone" id="phone" placeholder="Validate phone number" />
+                <p id="phone_feedback" class="feedback"></p>
+            </div>
+        </form>
+    </section>
+        <script src="./form.js"></script>
+    </body>
+    </html>
