@@ -11,69 +11,102 @@ const questions = [
     'userAnswer': null
   },
   {
-    'question': 'Which of these is NOT a JavaScript data type?',
+    'question': 'Which keyword is used to declare a constant in JavaScript?',
     'options': [
-      'String',
-      'Boolean',
-      'Float',
-      'Undefined'
+      'let',
+      'var',
+      'const',
+      'static'
     ],
-    'answer': 'Float',
+    'answer': 'const',
     'userAnswer': null
   },
   {
-    'question': 'Which of these is NOT a JavaScript data type?',
+    'question': 'What does DOM stand for?',
     'options': [
-      'String',
-      'Boolean',
-      'Float',
-      'Undefined'
+      'Document Object Model',
+      'Data Object Model',
+      'Document Oriented Module',
+      'Display Object Management'
     ],
-    'answer': 'Float',
+    'answer': 'Document Object Model',
     'userAnswer': null
   },
   {
-    'question': 'Which of these is NOT a JavaScript data type?',
+    'question': 'Which method converts JSON string into a JavaScript Object?',
     'options': [
-      'String',
-      'Boolean',
-      'Float',
-      'Undefined'
+      'JSON.parse()',
+      'JSON.stringify()',
+      'JSON.convert()',
+      'JSON.toObject()'
     ],
-    'answer': 'Float',
+    'answer': 'JSON.parse()',
     'userAnswer': null
   },
   {
-    'question': 'Which of these is NOT a JavaScript data type?',
+    'question': 'What will typeof null return?',
     'options': [
-      'String',
-      'Boolean',
-      'Float',
-      'Undefined'
+      'null',
+      'object',
+      'undefined',
+      'number'
     ],
-    'answer': 'Float',
+    'answer': 'object',
     'userAnswer': null
   },
   {
-    'question': 'Which of these is NOT a JavaScript data type?',
+    'question': 'Which symbol is used for strict equality?',
     'options': [
-      'String',
-      'Boolean',
-      'Float',
-      'Undefined'
+      '=',
+      '==',
+      '===',
+      '!=='
     ],
-    'answer': 'Float',
+    'answer': '===',
     'userAnswer': null
   },
   {
-    'question': 'Which of these is NOT a JavaScript data type?',
+    'question': 'Which method adds an item to the end of an array?',
     'options': [
-      'String',
-      'Boolean',
-      'Float',
-      'Undefin'
+      'shift()',
+      'splice()',
+      'pop()',
+      'slice()'
     ],
-    'answer': 'Float',
+    'answer': 'pop()',
+    'userAnswer': null
+  },
+  {
+    'question': 'Which loop is guaranteed to execute at least once?',
+    'options': [
+      'for',
+      'while',
+      'do...while',
+      'forEach'
+    ],
+    'answer': 'do...while',
+    'userAnswer': null
+  },
+  {
+    'question': 'Which array method creates a new array without modifying the original array?',
+    'options': [
+      'splice()',
+      'pop()',
+      'slice()',
+      'shift()'
+    ],
+    'answer': 'slice()',
+    'userAnswer': null
+  },
+  {
+    'question': 'Which keyword is used to define a function in JavaScript?',
+    'options': [
+      'def',
+      'method',
+      'func',
+      'function'
+    ],
+    'answer': 'function',
     'userAnswer': null
   }
 ]
@@ -154,6 +187,7 @@ function calculateScore () {
   questions.forEach((q) => {
     if (q.userAnswer === q.answer) {
       newScore++
+      console.log('score is: ', score)
       // document.body.style.backgroundColor = 'green'
     }
   })
@@ -164,7 +198,7 @@ function calculateScore () {
 
 function handleAnswer (selected) {
   const q = questions[current_question_index]
-  if (q.userAnswer) return
+  if (!q.userAnswer) return
 
   q.userAnswer = selected
   calculateScore()
